@@ -1,8 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const sorguRouters = require('./controller/routers/sorgularRouters');
-const fillData = require('./model/data');
-let createData = fillData;
+const data = require('./model/data');
+let createData = data;
 
 const app = express();
 
