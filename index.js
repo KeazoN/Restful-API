@@ -1,23 +1,19 @@
 const express = require('express');
 const fs = require('fs');
 const sorguRouters = require('./controller/routers/sorgularRouters');
-const { faker } = require('@faker-js/faker');
-const newData = {
-	"users": [
-		{
-			"id": faker.datatype.number(100),
-			"name": faker.name.fullName()
-		}
-	]
-}
+const fillData = require('./model/data');
+let createData = fillData;
 
 const app = express();
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
+	res.end(JSON.stringify(createData));
 });
 
 app.use('/sorgula', sorguRouters);
 
-app.listen(5000);
+app.listen(5000, () => {
+	console.log("Server is started to 5000 PORT");
+});
